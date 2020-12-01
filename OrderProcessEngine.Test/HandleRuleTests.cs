@@ -1,4 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OrderProcessEngine.Core.Common;
 
 namespace OrderProcessEngine.Test
 {

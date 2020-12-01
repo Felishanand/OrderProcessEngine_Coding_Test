@@ -48,5 +48,36 @@ namespace OrderProcessEngine.Test
             Assert.IsTrue(result.Count == 1);
             Assert.IsTrue(result.Contains(TypeOfActionAgainstRule.AddFreeAidVideoToPackagingSlip));
         }
+
+        [TestMethod]
+        public void HandleNewMemberShip()
+        {
+            var result = excuteRuleEngine.ExcuteRule(TypeOfRuleEnum.Membership);
+
+            Assert.IsTrue(result.Count == 2);
+
+            Assert.IsTrue(result.Contains(TypeOfActionAgainstRule.ActivateMembership));
+            Assert.IsTrue(result.Contains(TypeOfActionAgainstRule.SendEmail));
+        }
+
+        [TestMethod]
+        public void HandleUpgadeMemberShip()
+        {
+            var result = excuteRuleEngine.ExcuteRule(TypeOfRuleEnum.UpgradeMembership);
+
+            Assert.IsTrue(result.Count == 2);
+            Assert.IsTrue(result.Contains(TypeOfActionAgainstRule.UpgradeMembership));
+            Assert.IsTrue(result.Contains(TypeOfActionAgainstRule.SendEmail));
+        }
+
+        [TestMethod]
+        public void HandleParsingAndProcessing()
+        {
+            var productproces = new ProcessProduct();
+            var result = productproces.Process("LearningToSkiVideo");
+
+            Assert.IsTrue(result.Count == 1);
+            Assert.IsTrue(result.Contains(TypeOfActionAgainstRule.AddFreeAidVideoToPackagingSlip));
+        }
     }
 }
