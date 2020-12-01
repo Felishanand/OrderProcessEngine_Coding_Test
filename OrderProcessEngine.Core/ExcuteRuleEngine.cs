@@ -10,7 +10,8 @@ namespace OrderProcessEngine.Core
     {
         public List<TypeOfActionAgainstRule> ExcuteRule(TypeOfRuleEnum rule)
         {
-            var ruleChain = new PhysicalProductRule(null, rule);
+            var video = new VideoRule(null, rule);
+            var ruleChain = new PhysicalProductRule(video, rule);
 
             return ruleChain.VerifyRuleAndProcess();
         }
